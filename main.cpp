@@ -18,5 +18,6 @@ int main() {
 
         p.update(dt);
     }
+    cout << "I love Yala" << endl;
     return 0;
 }
