@@ -4,19 +4,25 @@
 using namespace std;
 
 int main() {
-    Vector3 initialPosition = Vector3(0,10,0);
-    Vector3 initialVelocity = Vector3(2, 0, 0);
-    double initialMass = 1.0;
+    // Start at height 100, stationary
+    Particle rock(Vector3(0, 100, 0), Vector3(0, 0, 0), 1.0);
 
-    Particle p(initialPosition, initialVelocity, initialMass);
+    double dt = 1.0;
+    Vector3 gravity(0, -10, 0); // A constant downward force
 
-    double dt = 1.0; //simulate 1 second per step
+    cout << "--- DROPPING ROCK ---" << endl;
 
-    for (int i = 0; i < 10; i++) {
-        cout << "Time: " << i << endl;
-        cout << " | Position: " << p.position.x << ", " << p.position.y << ", " << p.position.z << endl;
+    for (int i = 0; i < 6; i++) {
+        // 1. Apply Force
+        rock.applyForce(gravity);
 
-        p.update(dt);
+        // 2. Update Physics
+        rock.update(dt);
+
+        // 3. Print
+        cout << "Time " << i << " | Height: " << rock.position.y
+             << " | Speed: " << rock.velocity.y << endl;
     }
+    cout << " I love Yala" << endl;
     return 0;
 }
