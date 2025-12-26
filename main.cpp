@@ -23,6 +23,5 @@ int main() {
         cout << "Time " << i << " | Height: " << rock.position.y
              << " | Speed: " << rock.velocity.y << endl;
     }
-    cout << " I love Yala" << endl;
     return 0;
 }
